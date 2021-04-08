@@ -1,1 +1,18 @@
 // TODO
+.container {
+  width: 1120px;
+  height: 105px;
+  padding-top: 42px;
+  margin: 0 auto;
+
+  span {
+    margin-left: 266px;
+    color: #f8f8f8;
+    font-size: 20px;
+    font-weight: 700;
+
+    strong {
+      color: #ff57b2;
+    }
+  }
+}

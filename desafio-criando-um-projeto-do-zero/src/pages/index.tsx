@@ -27,7 +27,14 @@ interface HomeProps {
 
 export default function Home({ postsPagination }: HomeProps): any {
   // TODO
-  return <h1>Teste</h1>;
+
+  return (
+    <section className={commonStyles.container}>
+      <div>{postsPagination.results[0].data.title}</div>
+      <div>{postsPagination.results[0].data.subtitle}</div>
+      <div>{postsPagination.results[0].data.author}</div>
+    </section>
+  );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -35,34 +42,27 @@ export const getStaticProps: GetStaticProps = async () => {
   const postsResponse = await prismic.query(
     [Prismic.predicates.at('document.type', 'posts')],
     {
-      fetch: ['posts.title', 'posts.content'],
+      fetch: ['posts.title', 'posts.subtitle', 'posts.author', 'posts.content'],
       pageSize: 2,
     }
   );
-  console.log(JSON.stringify(postsResponse, null, 2));
 
-  const postsPagination = postsResponse.results.map(post => {
+  const results = postsResponse.results.map(post => {
     return {
       uid: post.uid,
       first_publication_date: null,
-      data: { title: post.data.title },
-      excerpt:
-        post.data.content.find(content => content.type === 'paragraph')?.text ??
-        '',
-      updatedAt: new Date(post.last_publication_date).toLocaleDateString(
-        'pt-BR',
-        {
-          day: '2-digit',
-          month: 'long',
-          year: 'numeric',
-        }
-      ),
+      data: {
+        title: post.data.title,
+        subtitle: post.data.subtitle,
+        author: post.data.author,
+      },
     };
   });
 
+  const postsPagination = { results, next_page: results[1].uid };
   // TODO
   return {
-    props: { postsResponse },
+    props: { postsPagination },
     revalidate: 60 * 60 * 24, // 24 hours
   };
 };

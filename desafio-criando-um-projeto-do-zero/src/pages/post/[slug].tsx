@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps, NextApiResponse } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 
 import Prismic from '@prismicio/client';
 import { RichText } from 'prismic-dom';
@@ -6,6 +6,7 @@ import { getPrismicClient } from '../../services/prismic';
 
 import commonStyles from '../../styles/common.module.scss';
 import styles from './post.module.scss';
+import Header from '../../components/Header';
 
 interface Post {
   first_publication_date: string | null;
@@ -30,17 +31,29 @@ interface PostProps {
 
 export default function Post({ post }: PostProps): any {
   // TODO
-  console.log(post.data.content[0].body);
-
   return (
     <>
-      <div>{post.data.title}</div>
-      <div>{post.data.author}</div>
-      <img src={post.data.banner.url} style={{ width: '300px' }} alt="" />
-      <div>{post.data.content[0].heading}</div>
-      <div
-        dangerouslySetInnerHTML={{ __html: String(post.data.content[0].body) }}
-      />
+      <Header />
+      <div className={commonStyles.container}>
+        <div className={styles.container}>
+          <img src={post.data.banner.url} alt="" />
+          <main>
+            <div className={styles.title}>{post.data.title}</div>
+            <div className={styles.author}>{post.data.author}</div>
+            <article>
+              <div className={styles.heading}>
+                {post.data.content[0].heading}
+              </div>
+              <div
+                className={styles.body}
+                dangerouslySetInnerHTML={{
+                  __html: String(post.data.content[0].body),
+                }}
+              />
+            </article>
+          </main>
+        </div>
+      </div>
     </>
   );
 }
