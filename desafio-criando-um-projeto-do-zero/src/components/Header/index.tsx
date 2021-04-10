@@ -1,12 +1,16 @@
+import Link from 'next/link';
 import styles from './header.module.scss';
 
 export default function Header(): any {
   // TODO
-  const headerText = '</>';
   return (
     <header className={styles.container}>
       <span>
-        <strong>{headerText}</strong> spacetraveling<strong>.</strong>
+        <Link href="/">
+          <a>
+            <img src="/logo.svg" alt="logo" />
+          </a>
+        </Link>
       </span>
     </header>
   );

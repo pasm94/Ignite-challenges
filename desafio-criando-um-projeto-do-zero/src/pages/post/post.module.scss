@@ -17,18 +17,36 @@
     margin: 0 auto;
   }
 
+  p {
+    margin-bottom: 2rem;
+  }
+
+  article {
+    margin-bottom: 5rem;
+  }
+
   .title {
-    text-align: center;
     margin-top: 80px;
     font-size: 48px;
     font-weight: 700;
   }
 
-  .author {
+  .authorAndDate {
+    display: flex;
     color: #bbbbbb;
     font-weight: 400;
     margin-top: 25px;
     font-size: 14px;
+
+    svg {
+      position: relative;
+      margin-right: 5px;
+      top: 1px;
+    }
+
+    div {
+      margin-right: 2rem;
+    }
   }
 
   .heading {
