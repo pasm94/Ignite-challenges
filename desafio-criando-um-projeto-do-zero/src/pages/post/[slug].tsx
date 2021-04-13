@@ -77,7 +77,7 @@ export default function Post({ post }: PostProps): any {
   const timeToReadText = Math.ceil(totalWords / 200);
   return (
     <>
-      <Header />
+      <Header marginLeft={366} />
       <div className={commonStyles.container}>
         <div className={styles.container}>
           <img src={post.data.banner.url} alt="imagem" />

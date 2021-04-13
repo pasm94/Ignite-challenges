@@ -1,1 +1,46 @@
 // TODO
+.container {
+  width: 721px;
+  margin: 0 auto;
+
+  // padding: 0 2rem;
+  color: #f8f8f8;
+
+  button {
+    color: #ff57b2;
+    background-color: transparent;
+    border: 0;
+    font-size: 18px;
+    margin-top: 5rem;
+  }
+}
+
+.title {
+  margin-top: 60px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.body {
+  margin-top: 10px;
+  font-weight: 400;
+  color: #bbbbbb;
+}
+
+.authorAndDate {
+  display: flex;
+  color: #bbbbbb;
+  font-weight: 400;
+  margin-top: 25px;
+  font-size: 14px;
+
+  svg {
+    position: relative;
+    margin-right: 5px;
+    top: 1px;
+  }
+
+  div {
+    margin-right: 1.5rem;
+  }
+}
