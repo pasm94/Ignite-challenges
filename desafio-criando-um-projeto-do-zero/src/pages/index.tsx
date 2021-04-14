@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next';
 import Prismic from '@prismicio/client';
 import { format } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { FiCalendar, FiClock, FiUser } from 'react-icons/fi';
 import { getPrismicClient } from '../services/prismic';
@@ -33,21 +33,36 @@ interface HomeProps {
 
 export default function Home({ postsPagination }: HomeProps): any {
   // TODO
-  const resultsFormatted = postsPagination.results.map(result => {
-    const formattedDate = format(
-      new Date(result.first_publication_date),
-      'dd MMM yyyy',
-      {
-        locale: ptBR,
-      }
-    );
-    return {
-      ...result,
-      formattedDate,
-    };
-  });
+  // postsPagination.results.map(result => {
+  //   const formattedDate = format(
+  //     new Date(result.first_publication_date),
+  //     'dd MMM yyyy',
+  //     {
+  //       locale: ptBR,
+  //     }
+  //   );
+  //   return {
+  //     ...result,
+  //     formattedDate,
+  //   };
+  // });
 
-  const [posts, setPosts] = useState(resultsFormatted);
+  const [posts, setPosts] = useState(
+    postsPagination.results.map(result => {
+      const formattedDate = format(
+        new Date(result.first_publication_date),
+        'dd MMM yyyy',
+        {
+          locale: ptBR,
+        }
+      );
+      return {
+        ...result,
+        formattedDate,
+      };
+    })
+  );
+
   const [nextPage, setNextPage] = useState(postsPagination.next_page);
 
   async function handleLoadNextPage(): Promise<void> {
@@ -59,7 +74,22 @@ export default function Home({ postsPagination }: HomeProps): any {
       response.json()
     );
 
-    setPosts([...posts, loadPosts.results[0]]);
+    const postFormatted = loadPosts.results.map(result => {
+      const formattedDate = format(
+        new Date(result.first_publication_date),
+        'dd MMM yyyy',
+        {
+          locale: ptBR,
+        }
+      );
+      return {
+        ...result,
+        formattedDate,
+      };
+    });
+    setPosts([...posts, postFormatted[0]]);
+
+    console.log(postFormatted[0]);
 
     setNextPage(loadPosts.next_page);
   }
