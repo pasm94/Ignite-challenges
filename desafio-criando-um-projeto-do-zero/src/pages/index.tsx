@@ -3,9 +3,9 @@ import { GetStaticProps } from 'next';
 import Prismic from '@prismicio/client';
 import { format } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
-import { FiCalendar, FiClock, FiUser } from 'react-icons/fi';
+import { FiCalendar, FiUser } from 'react-icons/fi';
 import { getPrismicClient } from '../services/prismic';
 
 import commonStyles from '../styles/common.module.scss';
@@ -29,23 +29,14 @@ interface PostPagination {
 
 interface HomeProps {
   postsPagination: PostPagination;
+  preview: string;
 }
 
-export default function Home({ postsPagination }: HomeProps): any {
+export default function Home({
+  postsPagination,
+  preview,
+}: HomeProps): JSX.Element {
   // TODO
-  // postsPagination.results.map(result => {
-  //   const formattedDate = format(
-  //     new Date(result.first_publication_date),
-  //     'dd MMM yyyy',
-  //     {
-  //       locale: ptBR,
-  //     }
-  //   );
-  //   return {
-  //     ...result,
-  //     formattedDate,
-  //   };
-  // });
 
   const [posts, setPosts] = useState(
     postsPagination.results.map(result => {
@@ -88,8 +79,6 @@ export default function Home({ postsPagination }: HomeProps): any {
       };
     });
     setPosts([...posts, postFormatted[0]]);
-
-    console.log(postFormatted[0]);
 
     setNextPage(loadPosts.next_page);
   }

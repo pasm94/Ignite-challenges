@@ -12,6 +12,7 @@ import { getPrismicClient } from '../../services/prismic';
 import commonStyles from '../../styles/common.module.scss';
 import styles from './post.module.scss';
 import Header from '../../components/Header';
+import { UtterancesComments } from '../../components/UtterancesComments';
 
 interface Post {
   first_publication_date: string | null;
@@ -32,10 +33,12 @@ interface Post {
 
 interface PostProps {
   post: Post;
+  preview: boolean;
 }
 
-export default function Post({ post }: PostProps): any {
+export default function Post({ post, preview }: PostProps): any {
   // TODO
+
   const { isFallback } = useRouter();
 
   if (isFallback) {
@@ -115,6 +118,7 @@ export default function Post({ post }: PostProps): any {
           </main>
         </div>
       </div>
+      <UtterancesComments />
     </>
   );
 }
@@ -141,13 +145,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
   // TODO
 };
 
-export const getStaticProps: GetStaticProps = async context => {
+export const getStaticProps: GetStaticProps = async ({
+  params,
+  preview = false,
+  previewData,
+}) => {
   const prismic = getPrismicClient();
-  const response = await prismic.getByUID(
-    'posts',
-    String(context.params.slug),
-    {}
-  );
+  const response = await prismic.getByUID('posts', String(params.slug), {
+    ref: previewData?.ref || null,
+  });
   // TODO
 
   const post = {
