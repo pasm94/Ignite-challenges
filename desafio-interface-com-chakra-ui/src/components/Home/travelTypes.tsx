@@ -9,6 +9,7 @@ export function TravelTypes() {
       maxW={1160}
       w='100%'
       justifyContent='space-between'
+      pr='40px'
     >
       <Image src='home/travel-types/nightlife.png' />
       <Image src='home/travel-types/beach.png' />

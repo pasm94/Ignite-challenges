@@ -1,7 +1,8 @@
-import { Flex, Button, Stack, Divider, Text } from '@chakra-ui/react';
+import { Flex, Divider, Text } from '@chakra-ui/react';
 import { Header } from '../components/Header';
 import { Banner } from '../components/Home/banner';
 import { TravelTypes } from '../components/Home/travelTypes';
+import { SwiperCarousel } from '../components/Swipper';
 
 export default function Home() {
   return (
@@ -34,6 +35,8 @@ export default function Home() {
       >
         Então escolha seu continente
       </Text>
+
+      <SwiperCarousel />
     </Flex>
   );
 }
