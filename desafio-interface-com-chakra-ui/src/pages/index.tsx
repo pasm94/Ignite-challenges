@@ -6,7 +6,13 @@ import { SwiperCarousel } from '../components/Swipper';
 
 export default function Home() {
   return (
-    <Flex w='100vw' maxW='100%' align='center' flexDir='column'>
+    <Flex
+      w='100vw'
+      maxW='100%'
+      align='center'
+      flexDir='column'
+      bgColor='#f2f5f7'
+    >
       <Header />
       <Banner />
       <TravelTypes />

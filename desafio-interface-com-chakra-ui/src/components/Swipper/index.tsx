@@ -1,4 +1,4 @@
-import { Flex, Image, Link, Text } from '@chakra-ui/react';
+import { Flex, Link, Text } from '@chakra-ui/react';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -11,7 +11,7 @@ export function SwiperCarousel() {
       maxW='1240px'
       mx='auto'
       mb={['5', '10']}
-      h={['250px', '650px']}
+      h={['250px', '450px']}
       // justify='center'
       // align='center'
       mt='10'
