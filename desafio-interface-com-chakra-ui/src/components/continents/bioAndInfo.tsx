@@ -1,21 +1,27 @@
 import { FiInfo } from 'react-icons/fi';
-import { Flex, Text } from '@chakra-ui/react';
+import { Flex, Text, useBreakpointValue } from '@chakra-ui/react';
 
 export function BioAndInfo() {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
+
   return (
     <Flex
-      mt='80px'
+      mt={['20px', '80px']}
       alignItems='center'
       justifyContent='space-between'
       width='100%'
       maxW={1160}
+      flexDirection={isWideVersion ? 'row' : 'column'}
     >
       <Text
-        w='600px'
-        h='211px'
+        w={['90%', '600px']}
+        h={['170px', '211px']}
         fontFamily='Poppins'
         fontWeight='400'
-        fontSize='24px'
+        fontSize={['14px', '24px']}
         textAlign='justify'
         color='gray.600'
       >
@@ -28,10 +34,12 @@ export function BioAndInfo() {
         display='grid'
         textAlign='center'
         gridTemplateColumns='0.8fr 1.1fr 1.1fr'
+        ml={['4', '0']}
+        mr={['4', '0']}
       >
-        <Flex display='grid'>
+        <Flex display='grid' textAlign={['start', 'center']}>
           <Text
-            fontSize='4xl'
+            fontSize={['3xl', '4xl']}
             fontFamily='Poppins'
             fontWeight='600'
             mb='-6px'
@@ -40,17 +48,17 @@ export function BioAndInfo() {
             50
           </Text>
           <Text
-            fontSize='2xl'
+            fontSize={['15px', '2xl']}
             fontFamily='Poppins'
-            fontWeight='600'
+            fontWeight={['400', '600']}
             color='gray.700'
           >
             países
           </Text>
         </Flex>
-        <Flex display='grid'>
+        <Flex display='grid' textAlign={['start', 'center']}>
           <Text
-            fontSize='4xl'
+            fontSize={['3xl', '4xl']}
             fontFamily='Poppins'
             fontWeight='600'
             color='#FFBA08'
@@ -59,17 +67,17 @@ export function BioAndInfo() {
             60
           </Text>
           <Text
-            fontSize='2xl'
+            fontSize={['15px', '2xl']}
             fontFamily='Poppins'
-            fontWeight='600'
+            fontWeight={['400', '600']}
             color='gray.700'
           >
             línguas
           </Text>
         </Flex>
-        <Flex display='grid'>
+        <Flex display='grid' textAlign={['start', 'center']}>
           <Text
-            fontSize='4xl'
+            fontSize={['3xl', '4xl']}
             fontFamily='Poppins'
             fontWeight='600'
             mb='-6px'
@@ -79,15 +87,15 @@ export function BioAndInfo() {
           </Text>
           <Text
             cursor='pointer'
-            fontSize='2xl'
+            fontSize={['15px', '2xl']}
             fontFamily='Poppins'
-            fontWeight='600'
+            fontWeight={['400', '600']}
             color='gray.700'
             display='flex'
             alignItems='center'
           >
             cidades +100
-            <Text fontSize='15px' ml='2' color='gray.500'>
+            <Text fontSize={['10px', '15px']} ml='2' color='gray.500'>
               <FiInfo style={{ strokeWidth: '3' }} />
             </Text>
           </Text>

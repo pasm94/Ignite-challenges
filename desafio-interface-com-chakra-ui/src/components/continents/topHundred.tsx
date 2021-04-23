@@ -1,7 +1,12 @@
-import { Flex, Image, Text } from '@chakra-ui/react';
+import { Flex, Image, Text, useBreakpointValue } from '@chakra-ui/react';
 import Flag from 'react-flagkit';
 
 export function TopHundred() {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
+
   return (
     <Flex
       flexDir='column'
@@ -9,28 +14,32 @@ export function TopHundred() {
       width='100%'
       maxW={1160}
       justifyContent='start'
-      mt='80px'
+      mt={['40px', '80px']}
     >
       <Text
         fontFamily='Poppins'
         fontWeight='500'
-        fontSize='36px'
+        ml={['5', '0']}
+        fontSize={['28px', '36px']}
         color='gray.600'
-        mb='10'
+        mb={['0', '10']}
       >
         Cidades + 100
       </Text>
 
       <Flex
-        display='grid'
+        display={['flex', 'grid']}
         gridTemplateColumns='1fr 1fr 1fr 1fr'
         justifyContent='space-between'
+        alignItems='center'
+        flexDirection='column'
         w='100%'
       >
         <Flex
           bgColor='#FFF'
-          w='90%'
+          w={['75%', '90%']}
           flexDir='column'
+          mt={['4', '0']}
           border='solid 1.5px gold'
           borderRadius='5'
         >
@@ -80,8 +89,9 @@ export function TopHundred() {
 
         <Flex
           bgColor='#FFF'
-          w='90%'
+          w={['75%', '90%']}
           flexDir='column'
+          mt={['4', '0']}
           border='solid 1.5px gold'
           pb='5'
           borderRadius='5'
@@ -131,8 +141,9 @@ export function TopHundred() {
         </Flex>
         <Flex
           bgColor='#FFF'
-          w='90%'
+          w={['75%', '90%']}
           flexDir='column'
+          mt={['4', '0']}
           border='solid 1.5px gold'
           borderRadius='5'
           pb='5'
@@ -182,8 +193,9 @@ export function TopHundred() {
         </Flex>
         <Flex
           bgColor='#FFF'
-          w='90%'
+          w={['75%', '90%']}
           flexDir='column'
+          mt={['4', '0']}
           border='solid 1.5px gold'
           pb='5'
           borderRadius='5'
@@ -233,12 +245,12 @@ export function TopHundred() {
         </Flex>
         <Flex
           bgColor='#FFF'
-          w='90%'
+          w={['75%', '90%']}
           flexDir='column'
+          mt={['4', '10']}
           border='solid 1.5px gold'
           pb='5'
           borderRadius='5'
-          mt='10'
         >
           <Image src='home/europe/england.jpg' borderRadius='5px 5px 0px 0px' />{' '}
           <Flex

@@ -1,4 +1,4 @@
-import { Flex, Image, Text } from '@chakra-ui/react';
+import { Flex, Image, Text, useBreakpointValue } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 import { FiChevronLeft } from 'react-icons/fi';
 import Link from 'next/link';
@@ -8,30 +8,41 @@ interface HeaderProps {
 }
 
 export function Header({ goBackIcon }: HeaderProps) {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
+
   return (
     <Flex
+      mx='auto'
+      align='center'
       as='header'
       w='100%'
       maxW={1440}
-      mx='auto'
-      align='center'
+      p={['3', '0']}
       bgColor='#ffffff'
+      justify='center'
     >
       {goBackIcon && (
         <Link href='/'>
           <Text
             cursor='pointer'
-            ml='10'
+            mr={['300px', '1200px']}
             position='absolute'
             color='gray.600'
-            fontSize='50px'
+            fontSize={['20px', '50px']}
           >
             <FiChevronLeft />
           </Text>
         </Link>
       )}
 
-      <Image src='home/header.png' />
+      {isWideVersion ? (
+        <Image src='home/header.png' />
+      ) : (
+        [<Image src='home/headerMobile.png' />]
+      )}
     </Flex>
   );
 }

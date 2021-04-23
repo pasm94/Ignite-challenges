@@ -1,7 +1,12 @@
-import { Flex, Image } from '@chakra-ui/react';
+import { Flex, Image, useBreakpointValue } from '@chakra-ui/react';
 
 export function TravelTypes() {
-  return (
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
+
+  return isWideVersion ? (
     <Flex
       mx='auto'
       align='center'
@@ -16,6 +21,10 @@ export function TravelTypes() {
       <Image src='home/travel-types/modern.png' />
       <Image src='home/travel-types/classic.png' />
       <Image src='home/travel-types/more.png' />
+    </Flex>
+  ) : (
+    <Flex mt='10'>
+      <Image src='home/travel-types/mobile.png' />
     </Flex>
   );
 }

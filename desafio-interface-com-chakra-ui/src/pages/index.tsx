@@ -15,20 +15,21 @@ export default function Home() {
     >
       <Header />
       <Banner />
+
       <TravelTypes />
       <Divider
         orientation='horizontal'
         colorScheme='gray'
         borderTop='2px'
         w='90px'
-        mt='80px'
+        mt={['10', '80px']}
         mb='52px'
         borderRadius='8px'
       />
       <Text
         fontFamily='Poppins'
         fontWeight='500'
-        fontSize='36px'
+        fontSize={['20px', '36px']}
         color='gray.600'
       >
         Vamos nessa?
@@ -36,7 +37,7 @@ export default function Home() {
       <Text
         fontFamily='Poppins'
         fontWeight='500'
-        fontSize='36px'
+        fontSize={['20px', '36px']}
         color='gray.600'
       >
         Então escolha seu continente

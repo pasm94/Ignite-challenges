@@ -33,10 +33,10 @@ export function SwiperCarousel() {
               direction='column'
               bgImage='url(home/europe/europe3.jpg)'
             >
-              <Text color='#FFF' fontWeight='bold' fontSize='7xl'>
+              <Text color='#FFF' fontWeight='bold' fontSize={['3xl', '7xl']}>
                 Europa
               </Text>
-              <Text color='#FFF' fontWeight='bold' fontSize='4xl'>
+              <Text color='#FFF' fontWeight='bold' fontSize={['1xl', '4xl']}>
                 O continente mais antigo
               </Text>
             </Flex>
@@ -53,13 +53,13 @@ export function SwiperCarousel() {
               direction='column'
               bgImage='url(home/europe/asia.jpg)'
             >
-              <Text color='#FFF' fontWeight='bold' fontSize='7xl'>
+              <Text color='#FFF' fontWeight='bold' fontSize={['3xl', '7xl']}>
                 Ásia
               </Text>
               <Text
                 color='#FFF'
                 fontWeight='bold'
-                fontSize='4xl'
+                fontSize={['1xl', '4xl']}
                 textAlign='center'
               >
                 Conheça o Muro da China, Taj Mahal e vários
